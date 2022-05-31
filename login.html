@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<script>
+  function handleCredentialResponse(response) {
+    // process response
+    // response.credential is a JWT ID token
+    console.log(response.credential);
+    var tag = document.createElement('p');
+    var text = document.createTextNode('Signed in with credential: ' + response.credential);
+    tag.appendChild(text);
+    var element = document.getElementById('reply-obj');
+    // erase whatever is already there
+    element.innerHTML = '';
+    // add element so credential shows up on page
+    element.appendChild(tag);
+  }
+</script>
+
+<h1>Login</h1>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<div id="g_id_onload"
+      data-client_id="993719121814-m6ug26nktrnulmrj8qlfno6aqtorjukt.apps.googleusercontent.com"
+      data-callback="handleCredentialResponse">
+</div>
+<div class="g_id_signin" data-type="standard"></div>
+
+<div id="reply-obj">
+</div>
